@@ -31,8 +31,8 @@ export default {
     },
     methods: {
         removeTodo: function(todoItem, index) {
-            console.log(todoItem, index);
             localStorage.removeItem(todoItem);
+            // 로컬스토리지를 삭제하고 리스트도 삭제
             this.todoItems.splice(index,1);
         }
     }
