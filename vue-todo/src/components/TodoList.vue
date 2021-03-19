@@ -19,9 +19,7 @@ export default {
     props: ['propsdata'],
     methods: {
         removeTodo: function(todoItem, index) {
-            localStorage.removeItem(todoItem);
-            // 로컬스토리지를 삭제하고 리스트도 삭제
-            this.todoItems.splice(index,1);
+            this.$emit('removeItem',todoItem, index);
         },
         toggleComplete: function(todoItem, index) {
             console.log(index);
