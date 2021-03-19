@@ -18,9 +18,7 @@ export default {
     methods: {
         addTodo: function() {
             if (this.newTodoItem !== ''){
-                var obj = {completed: false, item: this.newTodoItem};
-                localStorage.setItem(this.newTodoItem,JSON.stringify(obj));
-                // JSON.stringify(obj) 자바스크립트 객체를 스트링으로 변환.
+                this.$emit('addTodo',this.newTodoItem);
                 this.clearInput();
             }
         },
