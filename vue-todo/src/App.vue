@@ -2,8 +2,12 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput v-on:addTodo="addOneItem"></TodoInput>
-    <TodoList v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem" v-on:toggleItem="toggleOneItem"></TodoList>
-    <TodoFooter></TodoFooter>
+    <TodoList 
+      v-bind:propsdata="todoItems"
+      v-on:removeItem="removeOneItem"
+      v-on:toggleItem="toggleOneItem">
+    </TodoList>
+    <TodoFooter v-on:clearAll="clearAllItem"></TodoFooter>
   </div>
 </template>
 
@@ -35,7 +39,10 @@ export default {
       // 로컬스토리지엔 업데이트가없어서 지우고 다시 저장
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-
+    },
+    clearAllItem: function() {
+      localStorage.clear();
+      this.todoItems = [];
     }
   },
   created: function() {

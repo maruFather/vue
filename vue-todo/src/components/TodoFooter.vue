@@ -7,9 +7,8 @@
 <script>
 export default {
   methods: {
-    clearTodo: function() {
-      // 로컬스토리지 데이터 모두지우기
-      localStorage.clear();
+    clearTodo: function() { 
+      this.$emit('clearAll');
     }
   }
 }
