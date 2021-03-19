@@ -6,6 +6,7 @@
 </template>
 
 <script>
+//  화면에 있는데이터와 스크립트 단의 데이터가 동기화 (투웨이 바인딩)
 export default {
     data: function() {
         return {
