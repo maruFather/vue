@@ -44,7 +44,7 @@ export default {
   created: function() {
     // app 이 실행된후 바로 실행 vue 라이프사이클 
     if (localStorage.length > 0) {
-      for (var i = 0; i < localStorage.length; i++) {
+      for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {                    
             this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
             //this.todoItems.push(localStorage.key(i));
