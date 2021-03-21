@@ -35,7 +35,7 @@ export const store = new Vuex.Store({
             state.todoItems.splice(payload.index,1);
         },
         toggleOneItem(state,payload) {
-            payload.todoItems[payload.index].completed = !payload.todoItems[payload.index].completed;
+            state.todoItems[payload.index].completed = !state.todoItems[payload.index].completed;
             // 로컬스토리지엔 업데이트가없어서 지우고 다시 저장
             localStorage.removeItem(payload.todoItem.item);
             localStorage.setItem(payload.todoItem.item, JSON.stringify(payload.todoItem));
