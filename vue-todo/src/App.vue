@@ -15,33 +15,33 @@ import TodoFooter from './components/TodoFooter.vue'
 
 
 export default {
-  data: function() {
+  data() {
     return {
       todoItems: []
     }
   },
   methods: {
-    addOneItem: function(todoItem) {
+    addOneItem(todoItem) {
       var obj = {completed: false, item: todoItem};
       localStorage.setItem(todoItem,JSON.stringify(obj));
       this.todoItems.push(obj);
     },
-    removeOneItem: function(todoItem, index) {
+    removeOneItem(todoItem, index) {
       localStorage.removeItem(todoItem.item);
       this.todoItems.splice(index,1);
     },
-    toggleOneItem: function(todoItem, index) {
+    toggleOneItem(todoItem, index) {
       this.todoItems[index].completed = !this.todoItems[index].completed;
       // 로컬스토리지엔 업데이트가없어서 지우고 다시 저장
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     },
-    clearAllItem: function() {
+    clearAllItem() {
       localStorage.clear();
       this.todoItems = [];
     }
   },
-  created: function() {
+  created() {
     // app 이 실행된후 바로 실행 vue 라이프사이클 
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {

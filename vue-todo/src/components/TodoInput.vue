@@ -24,14 +24,14 @@ import Modal from './common/Modal.vue'
 
 //  화면에 있는데이터와 스크립트 단의 데이터가 동기화 (투웨이 바인딩)
 export default {
-    data: function() {
+    data() {
         return {
             newTodoItem: "",
             showModal: false
         }
     },
     methods: {
-        addTodo: function() {
+        addTodo() {
             if (this.newTodoItem !== ''){
                 this.$emit('addTodo',this.newTodoItem);
                 this.clearInput();
@@ -39,7 +39,7 @@ export default {
                 this.showModal = !this.showModal;
             }
         },
-        clearInput: function() {
+        clearInput() {
             this.newTodoItem = '';
         }
     },
