@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodo="addOneItem"></TodoInput>
-    <TodoList v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem" v-on:toggleItem="toggleOneItem"></TodoList>
-    <TodoFooter v-on:clearAll="clearAllItem"></TodoFooter>
+    <TodoInput></TodoInput>
+    <TodoList></TodoList>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
@@ -21,36 +21,25 @@ export default {
     }
   },
   methods: {
-    addOneItem(todoItem) {
-      var obj = {completed: false, item: todoItem};
-      localStorage.setItem(todoItem,JSON.stringify(obj));
-      this.todoItems.push(obj);
-    },
-    removeOneItem(todoItem, index) {
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index,1);
-    },
-    toggleOneItem(todoItem, index) {
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-      // 로컬스토리지엔 업데이트가없어서 지우고 다시 저장
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
-    clearAllItem() {
-      localStorage.clear();
-      this.todoItems = [];
-    }
-  },
-  created() {
-    // app 이 실행된후 바로 실행 vue 라이프사이클 
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {                    
-            this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-            //this.todoItems.push(localStorage.key(i));
-        }          
-      }
-    }
+    // addOneItem(todoItem) {
+    //   var obj = {completed: false, item: todoItem};
+    //   localStorage.setItem(todoItem,JSON.stringify(obj));
+    //   this.todoItems.push(obj);
+    // },
+    // removeOneItem(todoItem, index) {
+    //   localStorage.removeItem(todoItem.item);
+    //   this.todoItems.splice(index,1);
+    // },
+    // toggleOneItem(todoItem, index) {
+    //   this.todoItems[index].completed = !this.todoItems[index].completed;
+    //   // 로컬스토리지엔 업데이트가없어서 지우고 다시 저장
+    //   localStorage.removeItem(todoItem.item);
+    //   localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    // },
+    // clearAllItem() {
+    //   localStorage.clear();
+    //   this.todoItems = [];
+    // }
   },
   components: {
     TodoHeader,
